@@ -1,5 +1,6 @@
 # manojpawarsj12.github.io
-Credits
+---
+### Credits
 https://github.com/ryan-andri/ryan-andri.github.io for template
 
 https://vincentgarreau.com/particles.js for Particles.js
