@@ -8,13 +8,21 @@
 
 html {
   background-color: #000;
-  height: 190%;
+
   user-select: none;
   -ms-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
   -moz-user-select: none;
+}
+
+canvas {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
 }
 
 body {
@@ -58,18 +66,17 @@ h4 {
   font-size: 16px;
 }
 
-
+.social { z-index: 1; }
 
 .main-content {
     width: 500px;
-    top: 100%;
-    left: 50%;
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    -moz-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); 
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 140px;
 }
 
 /* Figure Image */
@@ -783,4 +790,13 @@ figure {
   height: 100%;
   background-color: #000;
   text-align: center;
+}
+
+/*extra stuff*/
+
+#skills-item-container {
+  display:grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 0 20px;
+  margin-left: -20px;
 }
