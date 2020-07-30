@@ -799,3 +799,31 @@ figure {
   grid-gap: 0 20px;
   margin-left: -20px;
 }
+
+.skillicons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: x-large;
+
+}
+
+
+
+.skillicon-box {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+  /* Start languages */
+.languages h2{
+    font-family: "Roboto", sans-serif;
+    font-size: 3rem;
+    color: rgb(15, 76, 117);
+    font-weight: 700;
+    position: relative;
+
+  }
+  section p {
+    font-size: 1.8rem;
+  }
