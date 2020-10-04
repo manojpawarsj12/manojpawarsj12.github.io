@@ -82,6 +82,10 @@ canvas {
   padding: 1rem;
 }
 
+.prujects__title {
+  margin-bottom: 6.6rem;
+}
+
 .languages h2{
   font-family: "Roboto", sans-serif;
   font-size: 3rem;
@@ -240,8 +244,10 @@ p {
 }
 
 .proj-wrapper {
-  margin-top: 2rem;
-  margin-left: 20rem;
+  padding-top: 2rem;
+  margin: 0 auto;
+  /* margin-top: 6rem;
+  margin-left: 20rem; */
   width: 65%;
 }
 
@@ -263,12 +269,9 @@ p {
   font-family: "Roboto", sans-serif;
   font-size: 3rem;
   color: rgb(15, 76, 117);
-
 }
 
 .keke{
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
-  
-
 }
