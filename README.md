@@ -13,7 +13,7 @@ Sections follow the résumé's order:
 - **Selected work:** backend systems from those roles (ISRO ground station platform, Go orbit-prediction services, self-serve job scheduler, event-driven checkout), each with its route and outcome.
 - **Projects:** Gobber, smolie-js, App Tracker, Vent-Chat.
 - **About:** working principles and education.
-- **Contact:** the terminus, with email, phone, LinkedIn and GitHub.
+- **Contact:** the terminus, with email, phone, LinkedIn, GitHub and the résumé PDF.
 
 Day map by default; night map follows the system dark-mode setting or the toggle in the header. Motion is limited to the map and respects `prefers-reduced-motion`.
 
@@ -67,7 +67,7 @@ All copy lives in [`src/content.ts`](src/content.ts). Components only draw what 
 
 Only use numbers you can back up in an interview.
 
-**Résumé download** is currently off. To enable it, add an NDA-safe PDF to `public/` and set `profile.resume` to its path (for example `"/Manoj_Pawar_Resume.pdf"`); the header, hero and contact buttons appear automatically.
+**Résumé:** replace `public/Manoj_Pawar_Resume.pdf` to update it. Set `profile.resume` to `""` to hide every résumé button.
 
 Colours are RGB triplets in [`src/index.css`](src/index.css): `:root` for the day map, `.dark` for the night map. The four line colours (`red`, `blue`, `green`, `amber`) are the only accent colours.
 
@@ -91,7 +91,7 @@ src/
     About.tsx           working principles, education
     Contact.tsx         terminus band and footer
     Bullet.tsx, Icons.tsx
-public/                 favicons
+public/                 favicons, résumé PDF
 PRODUCT.md              product facts the design must respect
 ```
 

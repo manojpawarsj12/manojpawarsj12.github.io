@@ -60,7 +60,7 @@ export default function Contact() {
           <CopyEmail />
         </div>
 
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-ground/20 bg-ground/20 sm:grid-cols-3">
+        <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-ground/20 bg-ground/20 sm:grid-cols-2 lg:grid-cols-4">
           {links.map(({ href, label, Icon, ext }) => (
             <li key={label} className="bg-ink">
               <a

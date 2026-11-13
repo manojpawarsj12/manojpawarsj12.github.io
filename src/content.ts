@@ -23,9 +23,8 @@ export const profile = {
   email: "manojpawarsj.mp11@gmail.com",
   phone: "+91 99808 68514",
   phoneHref: "tel:+919980868514",
-  // Résumé download is off until an NDA-safe PDF exists. To turn it back on, put the file in
-  // public/ and set this to its path, e.g. "/Manoj_Pawar_Resume.pdf".
-  resume: "" as string,
+  // Path of the résumé in public/. Set to "" to hide every résumé button.
+  resume: "/Manoj_Pawar_Resume.pdf" as string,
   github: "https://github.com/manojpawarsj12",
   linkedin: "https://www.linkedin.com/in/manojpawarsj",
 };
