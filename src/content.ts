@@ -174,7 +174,7 @@ export const lines: Line[] = [
 export const branchLines: { name: string; blurb: string; stack: string; href?: string; color: LineColor }[] = [
   {
     name: "Gobber",
-    blurb: "npm-compatible package installer with a global store, symlinked node_modules and parallel HTTP/2 downloads. ~6× faster than npm on cold installs, ~65× on CI installs.",
+    blurb: "npm-compatible package installer with a global store, symlinked node_modules, parallel HTTP/2 downloads and integration tests. ~6× faster than npm on cold installs, ~65× on CI installs.",
     stack: "Go",
     href: "https://github.com/manojpawarsj12/gobber",
     color: "green",
@@ -222,6 +222,7 @@ export const roles: Role[] = [
       "Building the backend of a distributed, real-time monitoring and control platform for ISRO’s ground station network, in Python and Node.js.",
       "Integrating heterogeneous station hardware over TCP/IP and Telnet sockets, decoding binary and ASCII data at the bit level.",
       "Designing config-driven services and a rules engine so operators change alarm logic without code; live data reaches them over SSE and MQTT.",
+      "Working directly with ISRO operators to define alarm rules and workflows.",
       "Developing on an offline, air-gapped RHEL 9 network under ISRO security rules.",
     ],
   },
@@ -233,7 +234,8 @@ export const roles: Role[] = [
     place: "Bangalore · space situational awareness",
     metric: { value: "−40%", label: "cloud cost on Go APIs" },
     points: [
-      "Turned business requirements into scalable microservices for FDS (orbit and manoeuvre planning) and SPACEMAP (space object tracking), shipped through Gitea CI/CD to AWS ECS.",
+      "Owned design and delivery of the FDS (orbit and manoeuvre planning) and SPACEMAP (space object tracking) backends from requirements to production: design reviews, story-point estimation, task distribution and weekly stand-ups, shipped through Gitea CI/CD to AWS ECS.",
+      "Reviewed code and mentored engineers on the team.",
       "Cut cloud cost on the Go orbit-prediction APIs by 40% with goroutine and channel worker pools and low memory use.",
       "Built a Nest.js job scheduler with RBAC and signup that lets teams change schedules without a deploy, cutting manual work 90%.",
       "Rebuilt the batch collision-check pipeline (bulk precompute, early filtering, an optimised search): 6 hours down to 1.",
