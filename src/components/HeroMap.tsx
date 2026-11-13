@@ -1,10 +1,8 @@
 import { useEffect, useState, type KeyboardEvent } from "react";
-import { lines } from "../content";
-import { lineBg } from "./Bullet";
+import { route } from "../content";
 
-// The hero draws the lead project as a route: stations are the real pipeline steps.
-const line = lines[0];
-const stations = line.stations;
+// The hero draws the backend layers I work across as one route, edge to people.
+const stations = route.stations;
 const n = stations.length;
 
 type Layout = {
@@ -19,7 +17,7 @@ type Layout = {
 
 const wide: Layout = (() => {
   const y = 150;
-  const xs = Array.from({ length: n }, (_, i) => 70 + i * 240);
+  const xs = Array.from({ length: n }, (_, i) => 70 + (i * 1060) / (n - 1));
   const pos = xs.map((x) => ({ x, y }));
   return {
     w: 1200,
@@ -69,7 +67,7 @@ function Map({ L, sel, setSel, reduced, className }: { L: Layout; sel: number; s
     }
   };
   return (
-    <svg viewBox={`0 0 ${L.w} ${L.h}`} className={className} aria-label={`${line.name}, drawn as a route`}>
+    <svg viewBox={`0 0 ${L.w} ${L.h}`} className={className} aria-label={`${route.name}, drawn as a route`}>
       <path d={L.path} fill="none" strokeWidth={12} strokeLinecap="round" className="draw stroke-red" style={{ ["--len" as string]: 1200 }} />
 
       {/* The train only moves when the visitor does: it travels to the selected station and waits there. */}
@@ -139,20 +137,16 @@ function Map({ L, sel, setSel, reduced, className }: { L: Layout; sel: number; s
 }
 
 export default function HeroMap() {
-  const [sel, setSel] = useState(2);
+  const [sel, setSel] = useState(1);
   const reduced = useReducedMotion();
   const s = stations[sel];
 
   return (
     <figure className="mx-auto max-w-page px-4 sm:px-8">
       <figcaption className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2">
-        <span aria-hidden className={`h-[8px] w-10 rounded-full ${lineBg[line.color]}`} />
-        <span className="text-[17px] font-extrabold">{line.name}</span>
-        {line.outcome && (
-          <span className="text-[17px] font-semibold text-quiet">
-            <span className="num font-extrabold text-ink">{line.outcome.value}</span> {line.outcome.label}
-          </span>
-        )}
+        <span aria-hidden className="h-[8px] w-10 rounded-full bg-red" />
+        <span className="text-[17px] font-extrabold">{route.name}</span>
+        <span className="text-[17px] font-semibold text-quiet">{route.caption}</span>
       </figcaption>
 
       <div role="group" aria-label="Pipeline stations. Use arrow keys to move between them.">

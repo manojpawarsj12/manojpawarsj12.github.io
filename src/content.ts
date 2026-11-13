@@ -14,9 +14,10 @@ export const profile = {
   intro:
     "I’m a backend and distributed systems engineer with five years in Go, Python and TypeScript. Right now I’m onsite at ISTRAC, ISRO, building real-time monitoring and control software for its ground station network.",
   proof: [
-    { value: "6×", text: "faster satellite collision screening" },
-    { value: "−40%", text: "cloud cost on orbit-prediction APIs" },
-    { value: "−90%", text: "manual ops work after a self-serve scheduler" },
+    { value: "−40%", text: "cloud cost on concurrent Go APIs" },
+    { value: "−90%", text: "manual ops work with a self-serve job scheduler" },
+    { value: "6×", text: "faster batch pipeline: 6 hours down to 1" },
+    { value: "+5%", text: "checkout conversion from a coupon service" },
   ],
   availability: "Open to senior backend and distributed systems roles.",
   email: "manojpawarsj.mp11@gmail.com",
@@ -30,9 +31,10 @@ export const profile = {
 };
 
 export const nav: { href: string; label: string; line: LineColor }[] = [
-  { href: "#work", label: "Work", line: "red" },
+  { href: "#skills", label: "Skills", line: "green" },
   { href: "#experience", label: "Experience", line: "blue" },
-  { href: "#toolbox", label: "Toolbox", line: "green" },
+  { href: "#work", label: "Work", line: "red" },
+  { href: "#projects", label: "Projects", line: "amber" },
   { href: "#about", label: "About", line: "blue" },
   { href: "#contact", label: "Contact", line: "amber" },
 ];
@@ -53,30 +55,51 @@ export type Line = {
   link?: { href: string; label: string };
 };
 
+/** The hero map: the backend layers I work across, edge to people, with where I did each. */
+export const route: { name: string; caption: string; stations: Station[] } = {
+  name: "The backend, end to end",
+  caption: "Five years across space tech, e-commerce, gaming and CRM",
+  stations: [
+    {
+      name: "Sockets",
+      tag: "TCP/IP · binary",
+      note: "Integrating hardware over raw TCP/IP and Telnet sockets and decoding binary and ASCII data at the bit level, at ISTRAC, ISRO.",
+    },
+    {
+      name: "APIs",
+      tag: "Go · Nest.js",
+      note: "Microservices and REST APIs: concurrent Go APIs at Digantara, Nest.js platforms for FDS and SPACEMAP, an Express.js CRM backend at Sunstone.",
+      interchange: true,
+    },
+    {
+      name: "Events",
+      tag: "MQTT · SQS",
+      note: "Event-driven services: bandwidth-optimised MQTT pub/sub at ISRO, and Lambda + SQS messaging between e-commerce services.",
+    },
+    {
+      name: "Data & jobs",
+      tag: "Postgres · Redis",
+      note: "PostgreSQL, MongoDB and Redis; a self-serve job scheduler that cut manual work 90%; a batch pipeline cut from 6 hours to 1.",
+      interchange: true,
+    },
+    {
+      name: "Live",
+      tag: "SSE · WebSockets",
+      note: "Real-time delivery: SSE streams to operators with RBAC, multiplayer game backends on Azure PlayFab, WebSocket chat.",
+    },
+    {
+      name: "Cloud",
+      tag: "AWS · Docker · CI/CD",
+      note: "Gitea CI/CD pipelines to AWS ECS, Docker and Terraform, and Go services tuned to cut cloud cost 40%.",
+    },
+  ],
+};
+
 export const lines: Line[] = [
-  {
-    id: "conjunction",
-    letter: "C",
-    color: "red",
-    name: "Satellite conjunction screening",
-    where: "Digantara · SPACEMAP & FDS · 2023–2026",
-    summary:
-      "The pipeline that predicts where satellites will be and flags pairs at risk of collision. I rewrote the screening algorithm from published research and moved the Go APIs onto bounded worker pools.",
-    stations: [
-      { name: "Catalogue", tag: "every object", note: "Every tracked object’s orbit, ready for screening." },
-      { name: "SGP4 batch", tag: "propagate", note: "Pre-propagate all orbits in bulk instead of once per candidate pair." },
-      { name: "Velocity prune", tag: "narrow", note: "Relative-velocity analysis discards pairs that can’t meet before any expensive search." },
-      { name: "SciPy TCA", tag: "closest approach", note: "Optimisers find closest-approach minima reliably, even on non-continuous distance functions.", interchange: true },
-      { name: "Go API", tag: "serve", note: "Goroutine and channel worker pools with tight memory bounds serve the predictions." },
-    ],
-    outcome: { value: "6h → 1h", label: "per screening run, and −40% cloud cost on the Go APIs" },
-    facts: ["2 commercial products served", "Gitea CI/CD to AWS ECS", "FDS web app in React"],
-    stack: ["Python", "SGP4", "SciPy", "Go", "AWS ECS"],
-  },
   {
     id: "ground-station",
     letter: "G",
-    color: "blue",
+    color: "red",
     name: "Ground station monitoring & control",
     where: "Digantara · onsite at ISTRAC, ISRO · 2026–",
     summary:
@@ -93,24 +116,70 @@ export const lines: Line[] = [
     stack: ["Python", "asyncio", "Node.js", "MQTT", "SSE", "TCP/IP", "RHEL 9"],
   },
   {
-    id: "gobber",
-    letter: "B",
-    color: "green",
-    name: "Gobber",
-    where: "Open source · Go",
-    summary: "A Node.js package manager written in Go that installs packages significantly faster than npm.",
+    id: "orbit-services",
+    letter: "O",
+    color: "blue",
+    name: "Orbit prediction & collision-check services",
+    where: "Digantara · SPACEMAP & FDS · 2023–2026",
+    summary:
+      "Backend services that predict where satellites will be and check whether any two could collide, for two commercial products. I made the Go APIs concurrent and cheap to run, and rebuilt the slow batch pipeline behind them.",
     stations: [
-      { name: "package.json", note: "Reads the project’s dependencies." },
-      { name: "Resolve + fetch", note: "Goroutines overlap network and disk work instead of waiting on each step.", interchange: true },
-      { name: "node_modules", note: "Installed tree, from a single compiled binary." },
+      { name: "Go APIs", note: "Goroutine and channel worker pools process requests concurrently while keeping memory use low.", interchange: true },
+      { name: "Batch precompute", note: "Every orbit is propagated once, in bulk, so later stages read results instead of recomputing them." },
+      { name: "Early filtering", note: "Pairs that can’t come close are dropped before any expensive work runs." },
+      { name: "Optimised search", note: "Rewrote the slowest stage from published techniques, so a full run takes 1 hour instead of 6." },
+      { name: "Ship", note: "Microservices deployed to AWS ECS through Gitea CI/CD pipelines I set up." },
     ],
+    outcome: { value: "−40%", label: "cloud cost on the Go APIs, and the batch run cut from 6 hours to 1" },
+    facts: ["2 commercial products: FDS and SPACEMAP", "Gitea CI/CD to AWS ECS", "FDS web app in React"],
+    stack: ["Go", "Python", "Microservices", "AWS ECS", "Docker", "Gitea CI/CD"],
+  },
+  {
+    id: "scheduler",
+    letter: "J",
+    color: "green",
+    name: "Self-serve job scheduler",
+    where: "Digantara · Nest.js · 2023–2026",
+    summary:
+      "A scheduling service that lets teams change when jobs run without a redeploy, with its own signup and role-based access, so routine changes stopped coming to engineering.",
+    stations: [
+      { name: "Signup", note: "Teams onboard themselves with user signup." },
+      { name: "RBAC", note: "Role-based access control decides who can change which jobs.", interchange: true },
+      { name: "Runtime schedules", note: "Schedules change at runtime, with no redeploy." },
+      { name: "Jobs run", note: "Jobs pick up the new timing on their own." },
+    ],
+    outcome: { value: "−90%", label: "manual operations work" },
     facts: [],
-    stack: ["Go", "Concurrency"],
-    link: { href: "https://github.com/manojpawarsj12/gobber", label: "Source on GitHub" },
+    stack: ["Nest.js", "TypeScript", "PostgreSQL", "RBAC"],
+  },
+  {
+    id: "checkout",
+    letter: "E",
+    color: "amber",
+    name: "Event-driven checkout & coupons",
+    where: "Elite Competitions · contract · 2023",
+    summary:
+      "A coupon system and the event plumbing around checkout for a UK e-commerce business, plus the dashboards to see what it changed.",
+    stations: [
+      { name: "Checkout", note: "Next.js storefront and Nest.js services." },
+      { name: "Coupon service", note: "Single-use, per-user and newsletter codes, validated at checkout.", interchange: true },
+      { name: "Events", note: "Services talk through AWS Lambda and SQS instead of direct calls." },
+      { name: "Metabase", note: "Dashboards for customer lifetime value, cart abandonment and average order value." },
+    ],
+    outcome: { value: "+5%", label: "checkout conversion" },
+    facts: [],
+    stack: ["Nest.js", "Next.js", "AWS Lambda", "SQS", "Metabase"],
   },
 ];
 
 export const branchLines: { name: string; blurb: string; stack: string; href?: string; color: LineColor }[] = [
+  {
+    name: "Gobber",
+    blurb: "A Node.js package manager written in Go that installs packages significantly faster than npm.",
+    stack: "Go",
+    href: "https://github.com/manojpawarsj12/gobber",
+    color: "green",
+  },
   {
     name: "smolie-js",
     blurb: "Reactive UI library under 1 KB: signals, effects and DOM helpers.",
@@ -163,12 +232,13 @@ export const roles: Role[] = [
     title: "Software Engineer",
     period: "Oct 2023 – Feb 2026",
     place: "Bangalore · space situational awareness",
-    metric: { value: "6×", label: "faster collision screening" },
+    metric: { value: "−40%", label: "cloud cost on Go APIs" },
     points: [
-      "Rewrote collision screening around SGP4 batch propagation, velocity pruning and SciPy minimisation: 6 hours down to 1.",
-      "Cut cloud cost on the Go orbit-prediction APIs by 40% with goroutine worker pools and low memory use.",
-      "Shipped a Nest.js job scheduler with RBAC and signup that lets teams reschedule without a deploy, cutting manual work 90%.",
-      "Built microservices and Gitea CI/CD to AWS ECS for FDS (orbit and manoeuvre planning) and SPACEMAP (space object tracking), and the FDS web app in React.",
+      "Turned business requirements into scalable microservices for FDS (orbit and manoeuvre planning) and SPACEMAP (space object tracking), shipped through Gitea CI/CD to AWS ECS.",
+      "Cut cloud cost on the Go orbit-prediction APIs by 40% with goroutine and channel worker pools and low memory use.",
+      "Built a Nest.js job scheduler with RBAC and signup that lets teams change schedules without a deploy, cutting manual work 90%.",
+      "Rebuilt the batch collision-check pipeline (bulk precompute, early filtering, an optimised search): 6 hours down to 1.",
+      "Built the FDS web app in React and Tailwind CSS.",
     ],
   },
   {
@@ -250,8 +320,8 @@ export const toolbox: ToolGroup[] = [
 
 export const principles = [
   {
-    name: "Fix the algorithm first",
-    body: "The 6× collision-screening win came from rethinking the maths, not from more machines. The 40% cloud saving came from making the Go services do less work per request.",
+    name: "Make the service do less",
+    body: "The 40% cloud saving came from Go services doing less work per request, and the 6× faster pipeline from computing things once instead of over and over. Cheaper beats bigger.",
   },
   {
     name: "Let people change it without a deploy",
@@ -259,7 +329,7 @@ export const principles = [
   },
   {
     name: "Measure the outcome, not the service",
-    body: "I wire up the numbers the business cares about, like conversion, cart abandonment and call pickup, so a change can be judged by what it moved.",
+    body: "I wire up the numbers the business cares about, like conversion, cart abandonment and call pickup, so a change is judged by what it moved.",
   },
 ];
 

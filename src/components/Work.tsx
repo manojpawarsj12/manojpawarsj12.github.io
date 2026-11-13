@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { branchLines, lines, type Line } from "../content";
+import { lines, type Line } from "../content";
 import { Bullet, lineBg, lineText } from "./Bullet";
-import { External, GitHub } from "./Icons";
+import { GitHub } from "./Icons";
 
 /** Line strip map, like the one above a train door: stations in order, each with its leader note. */
 function Strip({ line }: { line: Line }) {
@@ -119,14 +119,14 @@ function LineBlock({ line, lead }: { line: Line; lead: boolean }) {
 
 export default function Work() {
   return (
-    <section id="work" aria-labelledby="work-title" className="pb-8">
+    <section id="work" aria-labelledby="work-title" className="pt-20 sm:pt-28">
       <div className="mx-auto max-w-page px-4 sm:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6 pb-10">
           <h2 id="work-title" className="sign text-[clamp(2.4rem,5vw,4rem)]">
-            Lines I’ve built
+            Selected work
           </h2>
           <p className="max-w-[40ch] text-[17px] text-quiet">
-            Each project drawn as its route, with stations for the steps the work passes through.
+            Backend systems from my roles, each drawn as a route through the steps it handles.
           </p>
         </div>
 
@@ -134,35 +134,6 @@ export default function Work() {
           <LineBlock key={l.id} line={l} lead={i === 0} />
         ))}
 
-        <div className="border-t-2 border-ink py-14">
-          <h3 className="sign text-2xl">Branch lines</h3>
-          <ul className="mt-6 divide-y divide-hair border-y border-hair">
-            {branchLines.map((b) => {
-              const inner = (
-                <>
-                  <span aria-hidden className={`mt-2 h-[6px] w-8 shrink-0 rounded-full ${lineBg[b.color]}`} />
-                  <span className="grid flex-1 gap-1 sm:grid-cols-[12rem_1fr_auto] sm:items-baseline sm:gap-8">
-                    <span className="text-lg font-extrabold">{b.name}</span>
-                    <span className="text-quiet">{b.blurb}</span>
-                    <span className="text-sm font-semibold text-quiet">{b.stack}</span>
-                  </span>
-                  {b.href ? <External className="mt-1 h-5 w-5 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /> : <span className="w-5" />}
-                </>
-              );
-              return (
-                <li key={b.name}>
-                  {b.href ? (
-                    <a href={b.href} target="_blank" rel="noopener" className="group flex gap-5 py-5 transition-colors hover:bg-ink/[0.04]">
-                      {inner}
-                    </a>
-                  ) : (
-                    <div className="flex gap-5 py-5">{inner}</div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
       </div>
     </section>
   );
