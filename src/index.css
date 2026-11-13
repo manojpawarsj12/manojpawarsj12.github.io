@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enamel-sign day map; the same network at night. Line colours are the only colour. */
+:root {
+  --ground: 242 243 241;
+  --panel: 255 255 255;
+  --ink: 17 18 20;
+  --quiet: 74 77 82;
+  --hair: 205 208 204;
+  --line-red: 200 36 24;
+  --line-blue: 0 103 177;
+  --line-green: 0 132 61;
+  --line-amber: 242 169 0;
+  --line-w: 10px;
+  color-scheme: light;
+}
+.dark {
+  --ground: 11 14 19;
+  --panel: 20 25 34;
+  --ink: 238 240 242;
+  --quiet: 163 169 179;
+  --hair: 42 49 60;
+  --line-red: 255 77 61;
+  --line-blue: 61 155 255;
+  --line-green: 34 192 106;
+  --line-amber: 255 194 51;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ground text-ink antialiased;
+    font-variation-settings: "wdth" 100;
+    transition: background-color 0.3s ease;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: rgb(var(--line-amber));
+    color: #111214;
+  }
+  :focus-visible {
+    outline: 3px solid rgb(var(--line-blue));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 2px;
+  }
+  html {
+    scrollbar-color: rgb(var(--quiet) / 0.6) rgb(var(--ground));
+  }
+}
+
+@layer components {
+  /* Signage voice: heavy, slightly condensed, tight. */
+  .sign {
+    font-weight: 800;
+    font-variation-settings: "wdth" 86;
+    letter-spacing: -0.025em;
+    line-height: 0.98;
+  }
+  .num {
+    font-feature-settings: "tnum" 1, "lnum" 1;
+  }
+}
+
+/* Map line draw-in: lines are visible by default and only animate when motion is allowed. */
+@media (prefers-reduced-motion: no-preference) {
+  .draw {
+    stroke-dasharray: var(--len, 1600);
+    stroke-dashoffset: var(--len, 1600);
+    animation: draw 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) forwards;
+  }
+  .pop {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pop 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) forwards;
+  }
+  .rise {
+    animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) both;
+  }
+}
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.4); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes rise {
+  from { opacity: 0.001; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (min-width: 1024px) {
+  html { scroll-padding-top: 5.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* The terminus band stays dark in both themes. */
+.terminus {
+  --ink: 17 18 20;
+  --ground: 242 243 241;
+}
+.dark .terminus {
+  --ink: 20 25 34;
+  --ground: 238 240 242;
+}
