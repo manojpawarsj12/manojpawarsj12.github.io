@@ -39,9 +39,17 @@ npm run preview   # serve dist/ locally
 
 ## Deploying
 
-Every push to `master` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the site and publishes `dist/` to GitHub Pages.
+The site is published from the `gh-pages` branch, which holds only the built files.
 
-One-time setup: in the repository, go to **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
+```bash
+npm run deploy
+```
+
+This builds the site and pushes `dist/` to `gh-pages`. Your git needs to be logged in to GitHub.
+
+One-time setup: go to **Settings → Pages → Build and deployment**, set **Source** to **Deploy from a branch**, and pick **`gh-pages`** / **`/ (root)`**.
+
+Push source changes to `master` as usual; the live site only changes when you run `npm run deploy`. A manual GitHub Actions workflow is also included ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)) if you prefer to deploy from the Actions tab.
 
 ## Editing content
 
