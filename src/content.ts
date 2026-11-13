@@ -311,10 +311,20 @@ export const toolbox: ToolGroup[] = [
     name: "Cloud & ops",
     color: "green",
     daily: ["AWS", "Docker", "Linux (RHEL 9)"],
-    also: ["GCP", "Terraform", "Docker Swarm", "Gitea CI/CD", "Grafana"],
+    also: ["GCP", "Terraform", "Gitea CI/CD", "Git"],
   },
-  { name: "Frontend", color: "amber", daily: ["React", "Tailwind CSS"], also: ["Next.js"] },
-  { name: "Scientific & other", color: "amber", daily: ["SGP4", "SciPy"], also: ["Vitest", "Metabase", "Firebase", "Azure PlayFab"] },
+  {
+    name: "Observability & testing",
+    color: "amber",
+    daily: ["Grafana", "Loki", "OpenObserve", "pytest", "Vitest"],
+    also: [],
+  },
+  {
+    name: "Frontend & other",
+    color: "amber",
+    daily: ["React", "Tailwind CSS"],
+    also: ["Next.js", "SciPy", "SGP4", "Azure PlayFab", "Firebase", "Metabase"],
+  },
 ];
 
 export const principles = [
