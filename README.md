@@ -1,13 +1,87 @@
 # manojpawarsj12.github.io
 
-[![Website monip.org](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)](http://monip.org/)
-[![HitCount](http://hits.dwyl.io/manojpawarsj12/manojpawarsj12github.svg)](http://hits.dwyl.io/manojpawarsj12/manojpawarsj12github)
-[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+Portfolio of **Manoj Pawar SJ**, backend and distributed systems engineer (SDE 2 at Digantara).
+Live at **https://manojpawarsj12.github.io**.
 
----
-### Credits
-https://github.com/ryan-andri/ryan-andri.github.io for template
+The site is drawn as a transit network. Each project is a line, and its stations are the real system components in the order data passes through them:
 
-https://vincentgarreau.com/particles.js for Particles.js
+- **Hero:** the satellite collision-screening pipeline drawn as a line. Select a station (click, hover or arrow keys) to read what that step does; the train travels to it.
+- **Lines I’ve built:** satellite conjunction screening, ground station monitoring & control (kept high-level), and Gobber.
+- **Experience:** a single line with a stop per role.
+- **Toolbox:** a station index of the stack. Bold means in daily production use.
+- **About:** working principles and education.
+- **Contact:** the terminus, with email, phone, LinkedIn and GitHub.
 
-https://freehtml5.co for Parts of CSS
+Day map by default; night map follows the system dark-mode setting or the toggle in the header. Motion is limited to the map and respects `prefers-reduced-motion`.
+
+## Stack
+
+React 19 · Vite · TypeScript · Tailwind CSS 3 · Archivo (self-hosted via Fontsource). No backend and no environment variables.
+
+## Run locally
+
+Requires Node.js 20.19 or newer.
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the URL Vite prints (http://localhost:5173).
+
+```bash
+npm run build     # type-check and build the static site into dist/
+npm run preview   # serve dist/ locally
+```
+
+## Deploying
+
+Every push to `master` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the site and publishes `dist/` to GitHub Pages.
+
+One-time setup: in the repository, go to **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
+
+## Editing content
+
+All copy lives in [`src/content.ts`](src/content.ts). Components only draw what is there.
+
+| Export        | What it controls                                              |
+| ------------- | ------------------------------------------------------------- |
+| `profile`     | Name, headline, intro, the three results, contact details     |
+| `lines`       | Featured projects: stations, outcome, facts, stack            |
+| `branchLines` | Smaller projects                                              |
+| `roles`       | Experience                                                    |
+| `toolbox`     | Skills (`daily` = bold, `also` = regular)                     |
+| `principles`, `education` | "How I work"                                      |
+
+Only use numbers you can back up in an interview.
+
+**Résumé download** is currently off. To enable it, add an NDA-safe PDF to `public/` and set `profile.resume` to its path (for example `"/Manoj_Pawar_Resume.pdf"`); the header, hero and contact buttons appear automatically.
+
+Colours are RGB triplets in [`src/index.css`](src/index.css): `:root` for the day map, `.dark` for the night map. The four line colours (`red`, `blue`, `green`, `amber`) are the only accent colours.
+
+## Project layout
+
+```
+index.html              entry, meta tags, pre-paint theme script
+src/
+  main.tsx              mounts the app, loads the font
+  App.tsx               section order
+  content.ts            all copy
+  index.css             tokens, base styles, map animation
+  components/
+    Header.tsx          sticky platform strip, section nav, theme toggle
+    Hero.tsx            headline, intro, results, actions
+    HeroMap.tsx         interactive pipeline map (wide and phone layouts)
+    Work.tsx            project lines with strip maps, branch lines
+    Experience.tsx      career line
+    Toolbox.tsx         skills index
+    About.tsx           working principles, education
+    Contact.tsx         terminus band and footer
+    Bullet.tsx, Icons.tsx
+public/                 favicons
+PRODUCT.md              product facts the design must respect
+```
+
+## License
+
+GPL-3.0. See [LICENSE](LICENSE).
