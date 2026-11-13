@@ -174,7 +174,7 @@ export const lines: Line[] = [
 export const branchLines: { name: string; blurb: string; stack: string; href?: string; color: LineColor }[] = [
   {
     name: "Gobber",
-    blurb: "A Node.js package manager written in Go that installs packages significantly faster than npm.",
+    blurb: "npm-compatible package installer with a global store, symlinked node_modules and parallel HTTP/2 downloads. ~6× faster than npm on cold installs, ~65× on CI installs.",
     stack: "Go",
     href: "https://github.com/manojpawarsj12/gobber",
     color: "green",
