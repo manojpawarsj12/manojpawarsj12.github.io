@@ -10,7 +10,7 @@ related_targets: []
 Scope: single-page portfolio (index). Visitor mode: Experience.
 Audience: hiring managers and senior engineers screening for senior backend / distributed-systems roles; 5–10 s first read, then deep skim.
 Action: open the work, download the résumé, email or call.
-Proof: résumé-backed metrics only (see PRODUCT.md). NDA engagement described only at a high level.
+Proof: résumé-backed metrics only (see PRODUCT.md). ISRO/ISTRAC work: name the client and techniques, never the architecture (see PRODUCT.md).
 Constraints: React + Vite + Tailwind, GitHub Pages user site (base `/`), dark mode required, reduced motion respected.
 
 ## Direction contract
