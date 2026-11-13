@@ -52,7 +52,7 @@ function Strip({ line }: { line: Line }) {
 function LineBlock({ line, lead }: { line: Line; lead: boolean }) {
   return (
     <article id={line.id} aria-labelledby={`${line.id}-name`} className="border-t-2 border-ink py-14 sm:py-20">
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-16">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16">
         <div>
           <div className="flex items-center gap-4">
             <Bullet color={line.color} letter={line.letter} size="lg" />
@@ -64,7 +64,7 @@ function LineBlock({ line, lead }: { line: Line; lead: boolean }) {
             </div>
           </div>
           <p className="mt-6 max-w-prose text-lg leading-relaxed">{line.summary}</p>
-          {line.facts.length > 0 && (
+          {line.facts.length > 0 && line.outcome && (
             <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-semibold">
               {line.facts.map((f) => (
                 <li key={f} className="flex items-center gap-2">
@@ -76,6 +76,19 @@ function LineBlock({ line, lead }: { line: Line; lead: boolean }) {
           )}
         </div>
         <div className="lg:pt-2">
+          {!line.outcome && line.facts.length > 0 && (
+            <>
+              <h4 className="text-[15px] font-extrabold uppercase tracking-wide">Technical work</h4>
+              <ul className="mt-4 space-y-3 text-[16px] leading-snug">
+                {line.facts.map((f) => (
+                  <li key={f} className="grid grid-cols-[10px_1fr] gap-3">
+                    <span aria-hidden className={`mt-[0.45em] h-2.5 w-2.5 rounded-full ${lineBg[line.color]}`} />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           {line.outcome && (
             <>
               <p className={`sign num text-[clamp(3rem,6vw,5rem)] ${lineText[line.color]}`}>{line.outcome.value}</p>

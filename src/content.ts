@@ -12,7 +12,7 @@ export const profile = {
   headline: "Backend & distributed systems engineer",
   title: "Backends for live data, from satellite orbits to the checkout page.",
   intro:
-    "I’m a backend and distributed systems engineer with five years in Go, Python and TypeScript. Right now I’m building real-time monitoring and control software for satellite ground stations.",
+    "I’m a backend and distributed systems engineer with five years in Go, Python and TypeScript. Right now I’m onsite at ISTRAC, ISRO, building real-time monitoring and control software for its ground station network.",
   proof: [
     { value: "6×", text: "faster satellite collision screening" },
     { value: "−40%", text: "cloud cost on orbit-prediction APIs" },
@@ -78,12 +78,19 @@ export const lines: Line[] = [
     letter: "G",
     color: "blue",
     name: "Ground station monitoring & control",
-    where: "Digantara · onsite contract · 2026–",
+    where: "Digantara · onsite at ISTRAC, ISRO · 2026–",
     summary:
-      "Backend services for a real-time platform that lets operators monitor and control satellite ground station equipment from one place, with live data streamed to their screens.",
+      "Backend for a distributed, real-time monitoring and control platform across ISRO’s ground station network, developed on an offline, air-gapped RHEL 9 network under ISRO security rules.",
     stations: [],
-    facts: ["Python and Node.js services", "Real-time streaming to operators", "Secure, offline Linux environment"],
-    stack: ["Python", "Node.js", "Real-time streaming", "Linux"],
+    facts: [
+      "Hardware integration over raw TCP/IP and Telnet sockets",
+      "Binary and ASCII protocol parsing with bit masks, offsets and bitwise decoding",
+      "Config-driven (XML) design: new device types and rules without code changes",
+      "Rules engine evaluating live data for alarms, editable by operators",
+      "Real-time streaming to operators over SSE, with user management and RBAC",
+      "Bandwidth-optimised MQTT pub/sub with delta updates",
+    ],
+    stack: ["Python", "asyncio", "Node.js", "MQTT", "SSE", "TCP/IP", "RHEL 9"],
   },
   {
     id: "gobber",
@@ -142,10 +149,12 @@ export const roles: Role[] = [
     url: "https://www.digantara.co.in",
     title: "Software Development Engineer 2",
     period: "Mar 2026 – now",
-    place: "Bangalore · onsite contract",
+    place: "Bangalore · onsite at ISTRAC, ISRO",
     points: [
-      "Building backend services for a real-time monitoring and control platform used at satellite ground stations, in Python and Node.js.",
-      "Working onsite in a secure, offline Linux environment.",
+      "Building the backend of a distributed, real-time monitoring and control platform for ISRO’s ground station network, in Python and Node.js.",
+      "Integrating heterogeneous station hardware over TCP/IP and Telnet sockets, decoding binary and ASCII data at the bit level.",
+      "Designing config-driven services and a rules engine so operators change alarm logic without code; live data reaches them over SSE and MQTT.",
+      "Developing on an offline, air-gapped RHEL 9 network under ISRO security rules.",
     ],
   },
   {
@@ -246,7 +255,7 @@ export const principles = [
   },
   {
     name: "Let people change it without a deploy",
-    body: "When the team closest to a problem can change behaviour themselves, as with the job scheduler that cut manual work by 90%, engineering stops being the bottleneck.",
+    body: "When the people closest to a problem can change behaviour themselves, whether that’s a job schedule (90% less manual work) or an alarm rule at a ground station, engineering stops being the bottleneck.",
   },
   {
     name: "Measure the outcome, not the service",

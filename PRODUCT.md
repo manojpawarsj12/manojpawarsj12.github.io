@@ -29,7 +29,7 @@ Viewed on desktop during recruiter screening and on phones from LinkedIn. Visito
 ## Capabilities and Constraints
 
 - Sections: hero with tagline + CTA, featured work (top 3 highlighted), experience, skills, about, contact. Dark mode required.
-- **The current onsite engagement is under NDA.** Never name the client or describe its architecture, component names, protocols or data flow. Copy may only say he builds backend services for a real-time monitoring and control platform used at satellite ground stations (Python, Node.js, secure offline Linux environment).
+- **The ISTRAC, ISRO engagement is under NDA.** ISRO and ISTRAC may be named, and the technical work may be listed as techniques (socket integration, binary/ASCII protocol parsing, config-driven design, rules engine, SSE/RBAC, MQTT pub/sub, air-gapped RHEL 9). Never give away the architecture or the exact project: no internal component names, service counts, data-flow order or site/central topology.
 - Public contact: email `manojpawarsj.mp11@gmail.com`, phone `+91 9980868514`, GitHub `manojpawarsj12`, LinkedIn `manojpawarsj`. Résumé PDF download is off until an NDA-safe version exists.
 
 ## Evidence on Hand
