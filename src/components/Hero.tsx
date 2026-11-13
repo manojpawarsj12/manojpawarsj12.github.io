@@ -15,10 +15,10 @@ export default function Hero() {
 
         <div className="rise mt-7 flex flex-wrap items-center gap-3" style={{ ["--delay" as string]: "120ms" }}>
           <a
-            href="#work"
+            href="#experience"
             className="group inline-flex items-center gap-2.5 rounded-full bg-red py-3 pl-6 pr-5 text-[17px] font-bold text-white transition-transform hover:-translate-y-0.5 dark:text-[#111214]"
           >
-            See the work
+            See my experience
             <Arrow className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </a>
           {profile.resume && (

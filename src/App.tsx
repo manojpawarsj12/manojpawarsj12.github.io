@@ -4,6 +4,7 @@ import Work from "./components/Work";
 import Experience from "./components/Experience";
 import Toolbox from "./components/Toolbox";
 import About from "./components/About";
+import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 
 export default function App() {
@@ -18,9 +19,10 @@ export default function App() {
       <Header />
       <main id="main">
         <Hero />
-        <Work />
-        <Experience />
         <Toolbox />
+        <Experience />
+        <Work />
+        <Projects />
         <About />
         <Contact />
       </main>

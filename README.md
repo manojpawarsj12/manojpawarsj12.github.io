@@ -5,10 +5,13 @@ Live at **https://manojpawarsj12.github.io**.
 
 The site is drawn as a transit network. Each project is a line, and its stations are the real system components in the order data passes through them:
 
-- **Hero:** the satellite collision-screening pipeline drawn as a line. Select a station (click, hover or arrow keys) to read what that step does; the train travels to it.
-- **Lines I’ve built:** satellite conjunction screening, ground station monitoring & control (kept high-level), and Gobber.
+Sections follow the résumé's order:
+
+- **Hero:** the backend layers I work across (sockets, APIs, events, data & jobs, live delivery, cloud) drawn as one line. Select a station (click, hover or arrow keys) to see where I did that work; the train travels to it.
+- **Skills:** a station index of the stack. Bold means in daily production use.
 - **Experience:** a single line with a stop per role.
-- **Toolbox:** a station index of the stack. Bold means in daily production use.
+- **Selected work:** backend systems from those roles (ISRO ground station platform, Go orbit-prediction services, self-serve job scheduler, event-driven checkout), each with its route and outcome.
+- **Projects:** Gobber, smolie-js, App Tracker, Vent-Chat.
 - **About:** working principles and education.
 - **Contact:** the terminus, with email, phone, LinkedIn and GitHub.
 
@@ -47,8 +50,9 @@ All copy lives in [`src/content.ts`](src/content.ts). Components only draw what 
 | Export        | What it controls                                              |
 | ------------- | ------------------------------------------------------------- |
 | `profile`     | Name, headline, intro, the three results, contact details     |
-| `lines`       | Featured projects: stations, outcome, facts, stack            |
-| `branchLines` | Smaller projects                                              |
+| `route`       | The hero map's stations                                       |
+| `lines`       | Selected work: stations, outcome, facts, stack                |
+| `branchLines` | Personal projects                                             |
 | `roles`       | Experience                                                    |
 | `toolbox`     | Skills (`daily` = bold, `also` = regular)                     |
 | `principles`, `education` | "How I work"                                      |
@@ -71,8 +75,9 @@ src/
   components/
     Header.tsx          sticky platform strip, section nav, theme toggle
     Hero.tsx            headline, intro, results, actions
-    HeroMap.tsx         interactive pipeline map (wide and phone layouts)
-    Work.tsx            project lines with strip maps, branch lines
+    HeroMap.tsx         interactive backend route map (wide and phone layouts)
+    Work.tsx            selected work with strip maps
+    Projects.tsx        personal projects
     Experience.tsx      career line
     Toolbox.tsx         skills index
     About.tsx           working principles, education

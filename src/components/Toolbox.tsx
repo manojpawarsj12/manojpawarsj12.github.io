@@ -3,11 +3,11 @@ import { Swatch } from "./Bullet";
 
 export default function Toolbox() {
   return (
-    <section id="toolbox" aria-labelledby="tool-title" className="py-20 sm:py-28">
+    <section id="skills" aria-labelledby="tool-title" className="border-t-2 border-ink py-20 sm:py-28">
       <div className="mx-auto max-w-page px-4 sm:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <h2 id="tool-title" className="sign text-[clamp(2.4rem,5vw,4rem)]">
-            Toolbox
+            Skills
           </h2>
           <p className="max-w-[44ch] text-[17px] text-quiet">
             Read it like a station index. <span className="font-bold text-ink">Bold</span> is in daily production use; the rest I’ve

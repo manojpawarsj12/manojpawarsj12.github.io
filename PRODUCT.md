@@ -28,7 +28,8 @@ Viewed on desktop during recruiter screening and on phones from LinkedIn. Visito
 
 ## Capabilities and Constraints
 
-- Sections: hero with tagline + CTA, featured work (top 3 highlighted), experience, skills, about, contact. Dark mode required.
+- Sections follow the résumé's order: hero/summary, skills, experience, selected work (backend systems from roles), personal projects, about/education, contact. Dark mode required.
+- Frame him as a backend engineer, not a researcher: lead with services, APIs, events, data, delivery and cost/ops outcomes; keep scientific detail (SGP4, SciPy) secondary.
 - **The ISTRAC, ISRO engagement is under NDA.** ISRO and ISTRAC may be named, and the technical work may be listed as techniques (socket integration, binary/ASCII protocol parsing, config-driven design, rules engine, SSE/RBAC, MQTT pub/sub, air-gapped RHEL 9). Never give away the architecture or the exact project: no internal component names, service counts, data-flow order or site/central topology.
 - Public contact: email `manojpawarsj.mp11@gmail.com`, phone `+91 9980868514`, GitHub `manojpawarsj12`, LinkedIn `manojpawarsj`. Résumé PDF download is off until an NDA-safe version exists.
 
