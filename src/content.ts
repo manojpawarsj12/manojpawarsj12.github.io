@@ -322,6 +322,12 @@ export const toolbox: ToolGroup[] = [
     also: [],
   },
   {
+    name: "AI tooling",
+    color: "blue",
+    daily: ["Claude Code", "llama.cpp", "OpenCode"],
+    also: ["Local models offline", "Agentic coding on air-gapped systems"],
+  },
+  {
     name: "Frontend & other",
     color: "amber",
     daily: ["React", "Tailwind CSS"],
